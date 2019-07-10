@@ -38,5 +38,36 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
   <script src="mycharts.js"></script>
+  <!-- local -->
+  <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+  <script src="./mycharts.js"></script>
+  -->
+
+  <script>
+    window.chart.options = {
+        responsive: false,
+        responsiveAnimationDuration: 0,
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero: false,
+                    suggestedMax: 500000,
+                    suggestedMin: 0
+                },
+            }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero: false,
+                    suggestedMax: 4000,
+                    suggestedMin: 0
+                },
+            }]
+        }
+    };
+    window.chart.update({duration:0, easing:"easeOutBounce"});
+  </script>
 </body>
 </html>

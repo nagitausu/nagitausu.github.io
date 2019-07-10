@@ -1,56 +1,65 @@
+var loadedData = [{x:0, y:0}];
+var chart;
+
 function getCSV(){
     var req = new XMLHttpRequest();
     req.open("get", "data.csv", true);
     req.send(null);
 	
     req.onload = function(){
-        var loadedData = convertCSVtoArray(req.responseText);
+        return convertCSVtoArray(req.responseText);
     }
-    assert(ladedData[0][2])
-    return loadedData;
+    return true;
 }
  
 function convertCSVtoArray(str){
     var tmp = str.split("\n");
-    var loadedData = [];
  
     for(var i=0;i<tmp.length;++i){
         var row = tmp[i].split(',');
         row_x = Number(row[0]);
         row_y = Number(row[1]);
-        loadedData.push({
-            x:row_x, 
-            y:row_y
-        });
+        loadedData.push({x:row_x, y:row_y});
     }
-    assert(ladedData[0][1])
-    return loadedData;
+    return true;
 }
- 
-const loadCharts = function (loadedData) {
-  const chartDataSet = {
+
+function loadCharts() {
+  const ctx = document.createElement('canvas');
+  document.getElementById('chart-area').appendChild(ctx);
+
+  var chartDataSet = {
     type: 'scatter',
     data: {
       datasets: [{
-        label: 'groupA',
+        label: "A",
         data: loadedData,
         backgroundColor: 'rgba(60, 160, 220, 0.15)',
         borderColor: 'rgba(60, 160, 220, 0.3)',
-        pointRadius: 2,
+        pointRadius: 2
       }]
     },
     options: {
-        animation: false
+        animation: false,
+        scales:{
+            yAxes: [{
+                ticks: {
+                    max: 4000,
+                    min: 0
+                }
+            }],
+            xAxes: [{
+                ticks: {
+                    max: 500000,
+                    min: 0
+                }
+            }]
+        }
     }
   };
 
-  const ctx = document.createElement('canvas');
-  document.getElementById('chart-area').appendChild(ctx);
-  var myChart = new Chart(ctx, chartDataSet);
-  return myChart;
+  chart = new Chart(ctx, chartDataSet);
 };
 
-var loadedData = getCSV();
-assert(ladedData[0][3])
-var myChart = loadCharts(loadedData);
-myChart.update();
+getCSV();
+loadCharts();
