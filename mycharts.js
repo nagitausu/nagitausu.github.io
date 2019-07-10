@@ -1,4 +1,3 @@
-
 function getCSV(){
     var req = new XMLHttpRequest();
     req.open("get", "data.csv", true);
@@ -46,8 +45,9 @@ const loadCharts = function (loadedData) {
   const ctx = document.createElement('canvas');
   document.getElementById('chart-area').appendChild(ctx);
   var myChart = new Chart(ctx, chartDataSet);
-  myChart.update();
+  return myChart;
 };
 
 var loadedData = getCSV();
-loadCharts(loadedData);
+var myChart = loadCharts(loadedData);
+myChart.update();
