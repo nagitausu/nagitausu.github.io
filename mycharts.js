@@ -1,28 +1,28 @@
 const sampleData = {
-  labels: ["p0", "p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11"],
-  x: [1.9, 2.32, 1.52, 0.79, 1.37, 1.28, 1.92, 1.44, 2.58, -0.01, 0.71, 4.25],
-  y: [7.01, -2.15, -7.29, 1.71, 0.72, -4.83, 2.75, 4.11, 3.08, -2.45, 3.05, -3.93]
+    groupA: [{x:1.9, y:2.32}, {x:1.52, y:0.79}, {x:1.37, y:1.28}, 
+             {x:1.92, y:1.44}, {x:2.58, y:-0.01}, {x:0.71, y:4.25}],
+    groupB: [{x:7.01, y:-2.15}, {x:-7.29, y:1.71}, {x:0.72, y:-4.83}, 
+             {x:2.75, y:4.11}, {x:3.08, y:-2.45}, {x:3.05, y:-3.93}]
 };
 
 const loadCharts = function () {
   const chartDataSet = {
     type: 'scatter',
     data: {
-      labels: sampleData.labels,
       datasets: [{
-        label: 'x',
-        data: sampleData.x,
+        label: 'groupA',
+        data: sampleData.groupA,
         backgroundColor: 'rgba(60, 160, 220, 0.3)',
         borderColor: 'rgba(60, 160, 220, 0.8)'
       }, {
-        label: 'y',
-        data: sampleData.y,
+        label: 'groupB',
+        data: sampleData.groupB,
         backgroundColor: 'rgba(60, 190, 20, 0.3)',
         borderColor: 'rgba(60, 190, 20, 0.8)'
       }]
     },
     options: {
-        // animation: false
+        animation: false
     }
   };
 
