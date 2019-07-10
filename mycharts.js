@@ -50,8 +50,8 @@ const loadCharts = function () {
 
   const ctx = document.createElement('canvas');
   document.getElementById('chart-area').appendChild(ctx);
-  new Chart(ctx, chartDataSet);
-  Chart.update();
+  var myChart = new Chart(ctx, chartDataSet);
+  myChart.update();
 };
 
 getCSV();
