@@ -15,9 +15,12 @@ function convertCSVtoArray(str){
  
     for(var i=0;i<tmp.length;++i){
         var row = tmp[i].split(',');
-        x = Number(row[0]);
-        y = Number(row[1]);
-        loadedData.push({x:x, y:y});
+        row_x = Number(row[0]);
+        row_y = Number(row[1]);
+        loadedData.push({
+            x:row_x, 
+            y:row_y
+        });
     }
 }
  
