@@ -1,3 +1,26 @@
+var loadedData = [];
+
+function getCSV(){
+    var req = new XMLHttpRequest();
+    req.open("get", "data.csv", true);
+    req.send(null);
+	
+    req.onload = function(){
+	convertCSVtoArray(req.responseText);
+    }
+}
+ 
+function convertCSVtoArray(str){
+    var tmp = str.split("\n");
+ 
+    for(var i=0;i<tmp.length;++i){
+        var row = tmp[i].split(',');
+        x = Number(row[0]);
+        y = Number(row[1]);
+        loadedData.push({x:x, y:y});
+    }
+}
+ 
 const sampleData = {
     groupA: [{x:1.9, y:2.32}, {x:1.52, y:0.79}, {x:1.37, y:1.28}, 
              {x:1.92, y:1.44}, {x:2.58, y:-0.01}, {x:0.71, y:4.25}],
@@ -11,14 +34,9 @@ const loadCharts = function () {
     data: {
       datasets: [{
         label: 'groupA',
-        data: sampleData.groupA,
+        data: loadedData,
         backgroundColor: 'rgba(60, 160, 220, 0.3)',
         borderColor: 'rgba(60, 160, 220, 0.8)'
-      }, {
-        label: 'groupB',
-        data: sampleData.groupB,
-        backgroundColor: 'rgba(60, 190, 20, 0.3)',
-        borderColor: 'rgba(60, 190, 20, 0.8)'
       }]
     },
     options: {
@@ -31,4 +49,5 @@ const loadCharts = function () {
   new Chart(ctx, chartDataSet);
 };
 
+getCSV();
 loadCharts();
