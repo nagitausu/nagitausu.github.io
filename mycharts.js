@@ -38,8 +38,9 @@ const loadCharts = function () {
       datasets: [{
         label: 'groupA',
         data: loadedData,
-        backgroundColor: 'rgba(60, 160, 220, 0.3)',
-        borderColor: 'rgba(60, 160, 220, 0.8)'
+        backgroundColor: 'rgba(60, 160, 220, 0.15)',
+        borderColor: 'rgba(60, 160, 220, 0.3)',
+        pointRadius: 2,
       }]
     },
     options: {
@@ -50,6 +51,7 @@ const loadCharts = function () {
   const ctx = document.createElement('canvas');
   document.getElementById('chart-area').appendChild(ctx);
   new Chart(ctx, chartDataSet);
+  Chart.update();
 };
 
 getCSV();
