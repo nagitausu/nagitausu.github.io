@@ -8,7 +8,7 @@ const sampleData = {
 
 const loadCharts = function () {
   const chartDataSet = {
-    type: 'line',
+    type: 'scatter',
     data: {
       labels: sampleData.labels,
       datasets: [{
@@ -23,7 +23,9 @@ const loadCharts = function () {
         borderColor: 'rgba(60, 190, 20, 0.8)'
       }]
     },
-    options: {}
+    options: {
+        animation: false
+    }
   };
 
   const ctx = document.createElement('canvas');
