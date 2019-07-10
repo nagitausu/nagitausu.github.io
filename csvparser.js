@@ -15,8 +15,7 @@ function convertCSVtoArray(str){
     for(var i=0;i<tmp.length;++i){
         result[i] = tmp[i].split(',');
     }
-	result.map(function(element){return Number(element);});
- 
+	// result.map(function(element){return Number(element);});
     alert(result[1][2]);
 }
  
