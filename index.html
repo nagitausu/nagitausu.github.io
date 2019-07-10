@@ -48,26 +48,23 @@
 
   <script>
     window.chart.options = {
-        responsive: false,
-        responsiveAnimationDuration: 0,
+        animation: false,
         scales: {
             xAxes: [{
                 ticks: {
-                    beginAtZero: false,
                     suggestedMax: 500000,
                     suggestedMin: 0
                 },
             }],
             yAxes: [{
                 ticks: {
-                    beginAtZero: false,
                     suggestedMax: 4000,
                     suggestedMin: 0
                 },
             }]
         }
     }
-    window.chart.update({duration:0, easing:"easeOutBounce"});
+    window.chart.update({duration:0});
   </script>
 </body>
 </html>
