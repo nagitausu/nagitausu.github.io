@@ -6,6 +6,7 @@ function getCSV(){
     req.onload = function(){
         var loadedData = convertCSVtoArray(req.responseText);
     }
+    assert(ladedData[0][2])
     return loadedData;
 }
  
@@ -22,6 +23,7 @@ function convertCSVtoArray(str){
             y:row_y
         });
     }
+    assert(ladedData[0][1])
     return loadedData;
 }
  
@@ -49,5 +51,6 @@ const loadCharts = function (loadedData) {
 };
 
 var loadedData = getCSV();
+assert(ladedData[0][3])
 var myChart = loadCharts(loadedData);
 myChart.update();
